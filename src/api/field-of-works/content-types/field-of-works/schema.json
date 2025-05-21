@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "field_of_work",
+  "info": {
+    "singularName": "field-of-works",
+    "pluralName": "field-of-work",
+    "displayName": "Field of Work",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
