@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "experts",
+  "info": {
+    "singularName": "expert",
+    "pluralName": "experts",
+    "displayName": "Expert",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "practice": {
+      "type": "enumeration",
+      "enum": [
+        "Academic Excellence",
+        "Health Sciences",
+        "Marketing & Enrollment",
+        "Product & Technology",
+        "Online"
+      ]
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "expert_headers",
+  "info": {
+    "singularName": "expert-header",
+    "pluralName": "expert-headers",
+    "displayName": "Expert Header"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "blocks"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

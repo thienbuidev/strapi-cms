@@ -508,6 +508,75 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiExpertHeaderExpertHeader extends Struct.SingleTypeSchema {
+  collectionName: 'expert_headers';
+  info: {
+    displayName: 'Expert Header';
+    pluralName: 'expert-headers';
+    singularName: 'expert-header';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::expert-header.expert-header'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiExpertExpert extends Struct.CollectionTypeSchema {
+  collectionName: 'experts';
+  info: {
+    description: '';
+    displayName: 'Expert';
+    pluralName: 'experts';
+    singularName: 'expert';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::expert.expert'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    practice: Schema.Attribute.Enumeration<
+      [
+        'Academic Excellence',
+        'Health Sciences',
+        'Marketing & Enrollment',
+        'Product & Technology',
+        'Online',
+      ]
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFieldOfWorksFieldOfWorks
   extends Struct.CollectionTypeSchema {
   collectionName: 'field_of_work';
@@ -525,10 +594,7 @@ export interface ApiFieldOfWorksFieldOfWorks
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    imageUrl: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    icon: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -536,12 +602,10 @@ export interface ApiFieldOfWorksFieldOfWorks
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    subTitle: Schema.Attribute.Text;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url: Schema.Attribute.String;
   };
 }
 
@@ -580,6 +644,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiServiceService extends Struct.CollectionTypeSchema {
   collectionName: 'services';
   info: {
+    description: '';
     displayName: 'Service';
     pluralName: 'services';
     singularName: 'service';
@@ -592,7 +657,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String;
-    icon: Schema.Attribute.String;
+    imageUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1152,6 +1217,8 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::expert-header.expert-header': ApiExpertHeaderExpertHeader;
+      'api::expert.expert': ApiExpertExpert;
       'api::field-of-works.field-of-works': ApiFieldOfWorksFieldOfWorks;
       'api::global.global': ApiGlobalGlobal;
       'api::service.service': ApiServiceService;
